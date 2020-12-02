@@ -1,43 +1,34 @@
-package basic;
+package exam;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Arrays;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class DogServlet
+ * Servlet implementation class LoginServlet
  */
-@WebServlet("/DogServlet")
-public class DogServlet extends HttpServlet {
+@WebServlet("/LoginServlet")
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//loginPro.jsp 에서 했던 작업과 동일
 		request.setCharacterEncoding("utf-8");
+		String userid = request.getParameter("userid");
+		String userpwd = request.getParameter("userpwd");
 		
-		//사용자의 선택 값 가져오기
-		String[] dog = request.getParameterValues("dog");
-		//System.out.println(Arrays.toString(dog));
+		loginDTO login = new loginDTO(userid,userpwd);
+		HttpSession session = request.getSession();
+		session.setAttribute("login", login);
 		
-		response.setContentType("text/html;charset=utf-8");
-		PrintWriter out = response.getWriter();
-		out.print("<html><head><title>선호도</title></head>");
-		out.print("<body><h3>당신이 선택한 강아지 종류</h3>");
-		out.print("<ul>");
-		for(String s:dog) {
-			out.print("<li>"+s+"</li>");
-		}
-		out.print("</ul></body></html>");
-		
-		
+		response.sendRedirect("index.jsp");
 	}
 
 	/**

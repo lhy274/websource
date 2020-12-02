@@ -22,7 +22,7 @@ public class DinnerServlet extends HttpServlet {
 		String[] dinner = request.getParameterValues("dinner");
 		
 		
-		response.setContentType("text/http;charset=utf-8");
+		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
 		out.print("<html><head><title>메뉴</title></head>");
