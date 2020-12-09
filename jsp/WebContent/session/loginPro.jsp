@@ -14,6 +14,5 @@
 	loginDTO login = new loginDTO(userid,userpwd);
 	session.setAttribute("login", login);
 	
-	
 	response.sendRedirect("../index.jsp");
 %>

@@ -21,8 +21,6 @@
 		<div>
 			<button type="submit">전송</button>
 		</div>
-	
-	
 	</form>
 </body>
 </html>
