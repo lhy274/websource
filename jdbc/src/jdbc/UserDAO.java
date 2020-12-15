@@ -86,7 +86,7 @@ public class UserDAO {
 		
 		Connection con = getConnection();
 		PreparedStatement pstmt = null;
-		ResultSet re = null;
+		ResultSet rs = null;
 		
 		List<UserVO> list = new ArrayList<UserVO>();
 		
@@ -98,7 +98,7 @@ public class UserDAO {
 			pstmt = con.prepareStatement(sql);
 			//6. sql 구문 실행하고 결과 받기 => select구문 executeQuery() => ResultSet,
 			// insert,update,delete  : executeUpdate() => int
-			ResultSet rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			//7. 결과 출력(ResultSet : DB Select 결과를 담는 특수한 객체(테이블 구조))
 			while(rs.next()){
 				//UserVo 객체 생성
@@ -115,7 +115,7 @@ public class UserDAO {
 		e.printStackTrace();
 		} finally {
 			try{
-				re.close();
+				rs.close();
 				pstmt.close();
 				con.close();
 			}catch(Exception e) {
@@ -224,7 +224,7 @@ public class UserDAO {
 			}
 		}
 		return result;
-	}
+	}//updateUser
 	
 	
 }
