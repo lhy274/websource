@@ -3,12 +3,15 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import action.Action;
+import action.ActionForward;
 import action.DeleteAction;
 import action.InsertAction;
 
@@ -35,17 +38,26 @@ public class FrontController extends HttpServlet {
 //		out.print("contextPath "+contextPath+"<br>");
 //		out.print("cmd "+cmd+"<br>");
 		
-		if(cmd.equals("/insert.do")) {
-			InsertAction action = new InsertAction();
-			action.insert(request, response);
-		}else if(cmd.equals("/delete.do")) {
-			DeleteAction action = new DeleteAction();
-			action.delete(request,response);
-		}else if(cmd.equals("/update.do")) {
-			
-		}else if(cmd.equals("/select.do")) {
-			
+		
+		ActionFactory factory = ActionFactory.getInstance();
+		Action action = factory.action(cmd);
+		
+		
+		ActionForward af= null;
+		try {
+			action.execute(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		
+		if(af.isRedirect()) { // true => sendRedirect방식
+			response.sendRedirect(af.getPath());
+		}else { // false => forward 방식
+			RequestDispatcher rd = request.getRequestDispatcher(af.getPath());
+			rd.forward(request, response);
+		}
+		
+		
 		
 	}
 	

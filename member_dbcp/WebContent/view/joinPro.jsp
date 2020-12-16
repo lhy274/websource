@@ -22,7 +22,7 @@
 
 	//DB작업
 	MemberDAO dao = new MemberDAO();
-	int result = dao.joinInsert(userid, password, name, gender, email);
+	int result = dao.register(member);
 	
 	//회원가입 성공되면 로그인 페이지로 이동하기
 	if(result>0) {

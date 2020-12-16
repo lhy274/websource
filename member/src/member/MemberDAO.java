@@ -78,8 +78,22 @@ public class MemberDAO {
 			pstmt.setString(4, gender);
 			pstmt.setString(5, email);
 			result=pstmt.executeUpdate();
+	
+//	public int register(MemberVO member) {
+//		Connection con = getConnection();
+//		PreparedStatement pstmt = null;
+//		int result = 0;
+//		try {
+//			String sql = "insert into member1(userid,password,name,gender,email) values(?,?,?,?,?)";
+//			pstmt=con.prepareStatement(sql);
+//			pstmt.setString(1, member.getUserid());
+//			pstmt.setString(2, member.getPassword());
+//			pstmt.setString(3, member.getName());
+//			pstmt.setString(4, member.getGender());
+//			pstmt.setString(5, member.getEmail());
+//			result=pstmt.executeUpdate();
 			
-			
+		 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
