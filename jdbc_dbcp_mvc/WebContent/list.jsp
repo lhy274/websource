@@ -7,8 +7,9 @@
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-	List<UserVO> list = (List<UserVO>)request.getAttribute("list");
+	//List<UserVO> list = (List<UserVO>)request.getAttribute("list");
 
 %>
 
@@ -28,20 +29,21 @@
   <tbody>
 <%
 
-	for(UserVO vo:list) {
+	//for(UserVO vo:list) {
 				
 %>
+<c:forEach var="vo" items="${list}">
 	<tr>
-		<td><%=vo.getNo() %></td>
-		<td><a href="select.do?no=<%=vo.getNo()%>"><%=vo.getUsername() %></a></td>
-		<td><%=vo.getBirthyear() %></td>
-		<td><%=vo.getAddr() %></td>
-		<td><%=vo.getMobile() %></td>
+		<td>${vo.no} </td>
+		<td><a href="select.do?no=${vo.no} ">${vo.username}</a></td>
+		<td>${vo.birthyear}</td>
+		<td>${vo.addr}</td>
+		<td>${vo.mobile}</td>
 	</tr>
 
-
+</c:forEach>
 <%
-			}	
+			//}	
 
 %>
   </tbody>

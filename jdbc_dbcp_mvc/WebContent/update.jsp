@@ -13,7 +13,7 @@
 %>
 <%@include file="header.jsp" %>
 <div class="container">
-<form action="updatePro.jsp" method="post">
+<form action="modify.do" method="post">
 	 <div class="form-group">
     <label for="no">번호</label>
     <input type="text" class="form-control" id="no" name="no" readonly value="<%=vo.getNo() %>" >

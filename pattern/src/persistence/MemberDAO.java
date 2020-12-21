@@ -25,7 +25,9 @@ public class MemberDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
+			//이거 임폴트 해봐서 쓸 수 있는거구나
 			close(pstmt);
+			
 		}
 		return result;
 	}

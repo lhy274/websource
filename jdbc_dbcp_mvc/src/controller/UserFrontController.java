@@ -27,15 +27,15 @@ public class UserFrontController extends HttpServlet {
 		
 		//요청 분류하기
 		//http://localhost:8080/jdbc_dbcp_mvc/insert.do
-		String requestURI = request.getRequestURI(); //     /jdbc_dbcp_mvc/insert.do
+		String requestURI = request.getRequestURI(); //     /jdbc_dbcp_mvc/modify.do
 		String contextPath = request.getContextPath(); //  /jdbc_dbcp_mvc
-		String cmd = requestURI.substring(contextPath.length()); //   /list.do
+		String cmd = requestURI.substring(contextPath.length()); //   /modify.do
 		
 		//요청에 맞는 Action 생성하기 => UserActionFactory
 		UserActionFactory factory = UserActionFactory.getInstance();
 		Action action=factory.action(cmd);
 		
-		//생성도니 action 일 시키기
+		//생성된 action 일 시키기
 		ActionForward af=null;
 		try {
 			af=action.execute(request, response);

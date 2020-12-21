@@ -8,7 +8,7 @@
     pageEncoding="UTF-8"%>
 <%
 
-	UserVO vo = (UserVO)request.getAttribute("vo");
+	//UserVO vo = (UserVO)request.getAttribute("vo");
 %>
 
 <%@include file="header.jsp" %>
@@ -16,11 +16,11 @@
 <form action="" method="post">
 	 <div class="form-group">
     <label for="username">번호</label>
-    <input type="text" class="form-control" id="no" name="no" autofocus readonly value="<%=vo.getNo()%>">
+    <input type="text" class="form-control" id="no" name="no" autofocus readonly value="${vo.no}">
   </div>
   <div class="form-group">
     <label for="username">이름</label>
-    <input type="text" class="form-control" id="username" name="username" readonly value="<%=vo.getUsername()%>">
+    <input type="text" class="form-control" id="username" name="username" readonly value="${vo.username}">
   </div>
   <div class="form-group">
     <button type="button" class="btn btn-primary">수정</button>
@@ -45,7 +45,7 @@ $(function() {
 	
 	//삭제버튼을 클릭하면 deletePro.jsp
 	$(".btn-danger").click(function () {
-		$(form).attr("action","deletePro.jsp");
+		$(form).attr("action","delete.do");
 		$(form).submit();
 	})
 })

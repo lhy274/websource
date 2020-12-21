@@ -1,8 +1,10 @@
 package controller;
 
 import action.Action;
+import action.UserDeleteAction;
 import action.UserInsertAction;
 import action.UserListAction;
+import action.UserModifyAction;
 import action.UserSelectAction;
 import action.UserUpdateAction;
 
@@ -17,7 +19,7 @@ public class UserActionFactory {
 		return factory;
 	}
 	
-	public Action action(String cmd) {
+	public Action action(String cmd) {//성공했을 때 담는 곳
 		Action action = null;
 		
 		if(cmd.equals("/insert.do")) {
@@ -28,6 +30,10 @@ public class UserActionFactory {
 			action = new UserSelectAction("select.jsp");
 		}else if(cmd.equals("/update.do")) {
 			action = new UserUpdateAction("update.jsp");
+		}else if(cmd.equals("/modify.do")) {
+			action = new UserModifyAction("list.do");
+		}else if(cmd.equals("/delete.do")) {
+			action = new UserDeleteAction("list.do");
 		}
 		
 		return action;
