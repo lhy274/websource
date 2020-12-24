@@ -7,7 +7,7 @@
 			<h3 class="box-title">Board Reply</h3>
 		</div>
 		<div style="height:20px"></div>
-		<form action="" method="post" role="form">
+		<form action="qReply.do" method="post" role="form">
 			<div class="box-body">
 				<div class="form-group row">
 					<label for="name" class="col-sm-2 col-form-label">작성자</label>
@@ -19,13 +19,13 @@
 				<div class="form-group row">
 					<label for="title" class="col-sm-2 col-form-label">제목</label>
 					<div class="col-sm-10">
-						<input type="text" name="title" size="50" class="form-control" maxlength='100'  >
+						<input type="text" name="title" size="50" class="form-control" maxlength='100'  value="Re:${vo.title }">
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="content" class="col-sm-2 col-form-label">내용</label>
 					<div class="col-sm-10">
-						<textarea name='content' cols='60' class="form-control" rows='15'></textarea>
+						<textarea name='content' cols='60' class="form-control" rows='15'>Re:${vo.content }</textarea>
 					</div>
 				</div>
 				<div class="form-group row">
@@ -46,6 +46,11 @@
 				</div>
 				<div style="height:20px"></div>
 			</div>
+			<%-- 원본글에 대한 정보 : 댓글 작업을 위해 꼭 필요함 --%>
+			<input type="hidden" name="bno" value="${vo.bno }" />
+			<input type="hidden" name="re_ref" value="${vo.re_ref }" />
+			<input type="hidden" name="re_lev" value="${vo.re_lev }" />
+			<input type="hidden" name="re_seq" value="${vo.re_seq }" />
 		</form>
 	</div>
 </section>

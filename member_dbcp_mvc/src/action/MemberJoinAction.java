@@ -31,7 +31,7 @@ public class MemberJoinAction implements Action {
 		member.setGender(gender);
 		member.setEmail(email);
 		
-		//간단버전--이거 에러나는데
+		//간단버전--이거 에러나는데--이거 변수명 위에랑 같아서 그랬음.
 		MemberVO member1 = new MemberVO();
 		member1.setUserid(request.getParameter("userid"));
 		member1.setPassword(request.getParameter("password"));

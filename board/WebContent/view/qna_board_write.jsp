@@ -75,7 +75,7 @@ pageEncoding="UTF-8"%> <%@include file="../include/header.jsp"%>
         <div class="form-group text-center">
           <button type="submit" class="btn btn-primary">등록</button>
           <button type="reset" class="btn btn-danger">다시작성</button>
-          <button type="button" class="btn btn-warning" id="list">
+          <button type="button" class="btn btn-warning" id="list" onclick="location.href='../qList.do'">
             목록보기
           </button>
         </div>
@@ -86,3 +86,10 @@ pageEncoding="UTF-8"%> <%@include file="../include/header.jsp"%>
   <!-- /.box -->
 </section>
 <%@include file="../include/footer.jsp"%>
+<!-- <script>
+$(function() { // 더 간단한게 있었어. 속성 안에 있는 onclick도 스크립트야
+	$("#list").click(function() {
+		location.href='modifyForm.jsp';
+	})
+})
+</script> -->

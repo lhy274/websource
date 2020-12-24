@@ -40,7 +40,7 @@ public class BoardFrontController extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		//리턴받은 결과에 따라 지정도니 방식으로 이동하기
+		//리턴받은 결과에 따라 지정된 방식으로 이동하기
 		if(af.isRedirect()) {
 			response.sendRedirect(af.getPath());
 		}else {

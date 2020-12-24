@@ -31,11 +31,16 @@
     <artifactId>jstl</artifactId>
     <version>1.2</version>
 </dependency>
-  
   <!-- https://mvnrepository.com/artifact/com.oracle.ojdbc/ojdbc8 -->
 <dependency>
     <groupId>com.oracle.ojdbc</groupId>
     <artifactId>ojdbc8</artifactId>
+    <version>19.3.0.0</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/com.oracle.ojdbc/orai18n -->
+<dependency>
+    <groupId>com.oracle.ojdbc</groupId>
+    <artifactId>orai18n</artifactId>
     <version>19.3.0.0</version>
 </dependency>
 <dependency>
@@ -46,6 +51,8 @@
 
 
   </dependencies>
+  
+  
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
