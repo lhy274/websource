@@ -134,7 +134,10 @@ from(select rownum rnum,bno,title,name,regdate,readcount,re_lev
 where rnum > 10;
 
 
-
-
+--
+--전체 행수
+select count(*) from board;
+--검색 조전에 맞는 전체 행수가 필요해
+select count(*) from board where criteria=title and keyword='파이썬';
 
 

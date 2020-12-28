@@ -37,6 +37,9 @@ public class BoardWriteAction implements Action {
 		
 		if(!flag) {
 			path ="view/qna_board_write.jsp";
+		}else {
+			//성공하면 qList.do로 가는데 그대로 가면 안되지 null 남 그래서 주소 잡아서 더해
+			path += "?page=1&criteria=&keyword=";
 		}
 		
 		return new ActionForward(path, true);

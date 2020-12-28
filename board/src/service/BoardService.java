@@ -14,6 +14,10 @@ public interface BoardService {
 	//public List<BoardVO> getList();
 	//게시글 전체 조회+검색
 	public List<BoardVO> getList(SearchVO searchVO);
+	//게시글 전체 행 수
+	//public int getRows();
+	public int getRows(String criteria,String keyword);
+	
 	//게시글 특정 번호 조회
 	public BoardVO getRow(int bno);
 	//조회수 업데이트

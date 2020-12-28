@@ -62,6 +62,9 @@
 </section>
 <form action="" method="post" role="form">
 	<input type="hidden" name="bno" value="${vo.bno}"/>
+	<input type="hidden" name="page" value="${searchVO.page}"/>
+	<input type="hidden" name="criteria" value="${searchVO.criteria}"/>
+	<input type="hidden" name="keyword" value="${searchVO.keyword}"/>
 </form>
 <script>
 $(function() {
@@ -83,7 +86,9 @@ $(function() {
 		formObj.submit();
 	})
 	$("#list").click(function() {
-		location.href = 'qList.do';
+		//location.href = 'qList.do'; //페이기 나누기 하면서 바꿈
+		formObj.attr('action','qList.do');
+		formObj.submit();
 	})
 
 })

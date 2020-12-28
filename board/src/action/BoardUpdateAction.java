@@ -1,5 +1,6 @@
 package action;
 
+import java.net.URLEncoder;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,13 +35,18 @@ public class BoardUpdateAction implements Action {
 		if(map.containsKey("attach"))	// 있으면 보드에 저장 없으면 넘어감	
 			board.setAttach(map.get("attach"));
 		
+		//페이지 나누기 후 넘어오는 값
+		String page = map.get("page");
+		String criteria = map.get("criteria");
+		String keyword = URLEncoder.encode(map.get("keyword"), "utf-8");
+		
 		BoardService service = new BoardServiceImple();
 		boolean flag = service.updateArticle(board);
 		
 		if(!flag) {//수정실패
-			path = "qModify.do?bno="+map.get("bno");
+			path = "qModify.do?bno="+map.get("bno")+"&page="+page+"&criteria="+criteria+"&keyword="+keyword;;
 		}else {//수정성공
-			path += "?bno="+map.get("bno");
+			path += "?bno="+map.get("bno")+"&page="+page+"&criteria="+criteria+"&keyword="+keyword;;
 		}
 		
 		return new ActionForward(path, true); // 가져가는 거 아무것도 없으니까

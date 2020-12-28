@@ -115,6 +115,14 @@ public class BoardServiceImple implements BoardService {
 	}
 
 
+	@Override
+	public int getRows(String criteria,String keyword) {
+		int totalRow = dao.totalRows(criteria,keyword);
+		close(con);
+		return totalRow;
+	}
+
+
 //	@Override
 //	public List<BoardVO> searchList(SearchVO searchVO) {
 //		List<BoardVO> search = dao.searchAll(searchVO);

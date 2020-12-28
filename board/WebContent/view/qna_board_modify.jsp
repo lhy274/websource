@@ -64,6 +64,9 @@
 				<div style="height:20px"></div>
 			</div>
 			<input type="hidden" name="bno" value="${vo.bno }" />
+			<input type="hidden" name="page" value="${searchVO.page}"/>
+			<input type="hidden" name="criteria" value="${searchVO.criteria}"/>
+			<input type="hidden" name="keyword" value="${searchVO.keyword}"/>
 		</form>
 	</div>
 </section>

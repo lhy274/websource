@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import domain.BoardVO;
+import domain.SearchVO;
 import lombok.AllArgsConstructor;
 import service.BoardService;
 import service.BoardServiceImple;
@@ -25,12 +26,24 @@ public class BoardViewAction implements Action {
 		//service.hitUpdate(bno);
 		
 		
+		//페이지 나누기 후 넘어오는 값
+		SearchVO searchVO = new SearchVO();
+		searchVO.setPage(Integer.parseInt(request.getParameter("page")));
+		searchVO.setCriteria(request.getParameter("criteria"));
+		searchVO.setKeyword(request.getParameter("keyword"));
+
+		
 		// 서비스 요청 -> bno 에 해당하는 정보 가져오기
 		BoardService service = new BoardServiceImple();
 		BoardVO vo = service.getRow(bno);
+		
+		
 		request.setAttribute("vo", vo);
-		//결과에 따라 이동
-	
+		request.setAttribute("searchVO", searchVO);
+		
+		
+		
+		//결과에 따라 이동	
 		return new ActionForward(path, false);
 	}
 

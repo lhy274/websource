@@ -110,6 +110,46 @@ public class BoardDAO {
 //		return search;
 //	}
 	
+	//전체 행 수 가져오기
+	// 100개의 행 => 한페이지에 10개식 => 1 ~ 10 (1 2 3 4 5 6 7 8 9 10)
+	// 91개의 행 => 10페이지에 나와야함/전체행수가 나와야함
+	public int totalRows(String criteria, String keyword) {
+		String sql = "";
+		int totalRow = 0;
+		try {
+			
+			//if(criteria!=null) { !=null로 했더니 에러남
+			if(!criteria.isEmpty()) { // 에러나서 엠티로 바꿈. 아래쪽이랑 호환 문제인듯? 호환 아래쪽도 엠티로 바꾸고 첫화면 index에서도 empty로 딸려갈 수 있게 주소를 전부 적어줌
+				//검색조건에 맞는 행 수 구하기
+				sql = "select count(*) from board where "+criteria+" like ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, "%"+keyword+"%");
+			}else {
+				//전체 게시물 수 구하기
+				sql = "select count(*) from board";
+				pstmt = con.prepareStatement(sql);
+			}	
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				totalRow = rs.getInt(1);
+			}
+		} catch (SQLException e) {			
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}		
+		return totalRow;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	//search + list 구현
@@ -126,15 +166,16 @@ public class BoardDAO {
 		// 문자열 => String,
 		// StringBuffer, StringBuilder => append()
 		
-		int start = searchVO.getPage()*searchVO.getAmount();
-		int limit = (searchVO.getPage()-1)*searchVO.getAmount();
+		int start = searchVO.getPage()*searchVO.getAmount(); //1*10
+		int limit = (searchVO.getPage()-1)*searchVO.getAmount(); //(1-1)*10
 		
 		StringBuilder builder = new StringBuilder();
 		List<BoardVO> list = new ArrayList<BoardVO>();	
 		try {			
 			String sql = "";
 
-			if(searchVO.getCriteria()!=null) { //검색 - 비어있지 않다면 = 검색을 하겠다는 소리
+			//if(searchVO.getCriteria()!=null) { //검색 - 비어있지 않다면 = 검색을 하겠다는 소리
+			if(!searchVO.getCriteria().isEmpty()) { //검색 - 비어있지 않다면 = 검색을 하겠다는 소리
 //				sql = "select bno,title,name,regdate,readcount,re_lev from board ";
 //				sql += "where "+searchVO.getCriteria()+" like ? order by re_ref desc, re_seq asc";		
 				
