@@ -18,7 +18,7 @@ public class BoardWriteAction implements Action {
 	
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// request.getParameter()		
+		// request.getParameter() 못씀. 첨부파일 때문에 인코딩 multipart/form-data 써줘서	
 		FileUploadUtil utils = new FileUploadUtil();
 		Map<String, String> map = utils.uploadFile(request);
 		

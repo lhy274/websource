@@ -21,7 +21,7 @@ public class BookListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// 리퀘스튼데 리스트는 넘어오는게 엇어 부리는거
+		// 리퀘스튼데 리스트는 넘어오는게 엇어 뿌리는거
 		
 		BookService service = new BookServiceImpl();
 		List<BookVO> list =service.getList();

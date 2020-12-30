@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import domain.MemberVO;
 
@@ -114,5 +115,31 @@ public class MemberDAO {
 		}
 		return result;
 	}//deleteMember
+	
+	// 중복 아이디
+	public boolean chekId(String userid) {
+		boolean result = false;
 
+		String sql = "select userid from member1 where userid=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}//chekId(S
+
+	
+	
+	
+	
 }
