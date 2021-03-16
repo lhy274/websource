@@ -29,7 +29,7 @@ public class MemberActionFactory {
 			action = new MemberLeaveAction("index.jsp");
 		}else if(cmd.equals("/join.do")) {
 			action = new MemberJoinAction("view/loginForm.jsp");
-		}else if(cmd.equals("/chekId.do")) {
+		}else if(cmd.equals("/checkId.do")) {
 			action = new MemberCheckIdAction("view/checkId.jsp");
 		}
 		

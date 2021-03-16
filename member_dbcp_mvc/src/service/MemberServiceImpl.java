@@ -78,7 +78,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public boolean checkIdMember(String userid) {
-		boolean result = dao.chekId(userid);
+		boolean result = dao.checkId(userid);
 		close(con);
 		return result;
 	}

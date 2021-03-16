@@ -117,7 +117,7 @@ public class MemberDAO {
 	}//deleteMember
 	
 	// 중복 아이디
-	public boolean chekId(String userid) {
+	public boolean checkId(String userid) {
 		boolean result = false;
 
 		String sql = "select userid from member1 where userid=?";

@@ -149,7 +149,7 @@ public class MemberDAO {
 	}// deleteMember
 
 	// 중복 아이디
-	public boolean chekId(String userid) {
+	public boolean checkId(String userid) {
 		boolean result = false;
 		Connection con = getConnection();
 		PreparedStatement pstmt = null;

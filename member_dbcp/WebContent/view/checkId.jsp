@@ -8,12 +8,9 @@
 	
 	//DB작업
 	MemberDAO dao = new MemberDAO();
-	if(dao.chekId(userid)){
+	if(dao.checkId(userid)){
 		out.print("true");
 	}else{
 		out.print("false");
 	}
-	
-	
-
 %>

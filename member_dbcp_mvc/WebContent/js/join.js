@@ -15,7 +15,7 @@ $(function() {
 				required:true,
 				validId:true,
 				remote:{
-					url:"../chekId.do",
+					url:"../checkId.do",
 					type:"post",
 					data:{
 						userid:function(){
